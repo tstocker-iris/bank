@@ -5,6 +5,12 @@ public class Bank {
 
     public Account lookupOrCreate(String pNom)
     {
+        if (this.root == null) {
+            this.root = Node.create();
+            this.root.etiquette = Account.create(pNom);
+            this.root.filsGauche = Node.create();
+            this.root.filsDroit = Node.create();
+        }
         return root.lookupOrCreate(pNom);
     }
 

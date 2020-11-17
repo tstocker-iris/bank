@@ -8,7 +8,29 @@ public class Node {
     public Account lookupOrCreate(String pNom)
     {
         System.out.println(pNom);
-        return null;
+        Account retour = null;
+        if (this.etiquette != null) {
+            if (this.etiquette.name.compareTo(pNom) == 0) {
+                System.out.println("J'ai trouvé l'étiquette !");
+                retour = this.etiquette;
+            } else if (this.etiquette.compareTo(pNom) < 0) {
+                System.out.println("Je vais à droite !");
+                retour = this.filsDroit.lookupOrCreate(pNom);
+            } else if (this.etiquette.compareTo(pNom) > 0) {
+                System.out.println("Je vais à gauche !");
+                retour = this.filsGauche.lookupOrCreate(pNom);
+            }
+        }
+
+        if (retour == null) {
+            System.out.println("Je n'ai rien trouvé donc je créé !");
+            this.filsGauche = Node.create();
+            this.filsDroit = Node.create();
+            this.etiquette = Account.create(pNom);
+            retour =  this.etiquette;
+        }
+
+        return retour;
     }
 
     public static Node create() {
