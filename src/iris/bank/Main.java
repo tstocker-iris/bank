@@ -17,5 +17,9 @@ public class Main {
         bank.display();
         System.out.println("\nDisplay with pad :");
         bank.displayWithPad();
+        bank.root.delete("Kevan");
+        System.out.println("\nDisplay with pad :");
+        bank.displayWithPad();
+
     }
 }

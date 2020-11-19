@@ -62,6 +62,40 @@ public class Node {
         }
     }
 
+    public Node successor()
+    {
+        Node courant = this;
+        while (courant.filsGauche != null && courant.filsGauche.etiquette != null) {
+            courant = courant.filsGauche;
+        }
+        return courant;
+    }
+
+    public Node delete(String pNom) {
+        if (this.etiquette != null) {
+            if (this.etiquette.compareTo(pNom) < 0) {
+                this.filsDroit = this.filsDroit.delete(pNom);
+            } else if (this.etiquette.compareTo(pNom) > 0) {
+                this.filsGauche = this.filsGauche.delete(pNom);
+            } else {
+                if (this.filsGauche == null) {
+                    return this.filsDroit;
+                } else if (this.filsDroit == null) {
+                    return this.filsGauche;
+                }
+
+                Node successor = this.filsDroit.successor();
+                if (successor.etiquette != null && successor.etiquette.name != this.etiquette.name) {
+                    this.etiquette = successor.etiquette;
+                    this.filsDroit = this.filsDroit.delete(successor.etiquette.name);
+                } else {
+                    this.etiquette = null;
+                }
+            }
+        }
+        return this;
+    }
+
     public static String padLeft(String s, int n) {
         if (n > 0)
             return String.format("%" + n + "s", s);
