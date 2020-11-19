@@ -33,6 +33,9 @@ public class Node {
         return retour;
     }
 
+    /**
+     * @url https://developpement-informatique.com/article/173/parcours-d%E2%80%99un-arbre-binaire
+     */
     public void display()
     {
         if (this.filsGauche != null) {
