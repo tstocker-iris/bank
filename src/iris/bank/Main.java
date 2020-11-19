@@ -13,5 +13,9 @@ public class Main {
         bank.lookupOrCreate("Alton");
         bank.lookupOrCreate("Martyn");
         bank.lookupOrCreate("Willem");
+        System.out.println("\nDisplay without pad :");
+        bank.display();
+        System.out.println("\nDisplay with pad :");
+        bank.displayWithPad();
     }
 }

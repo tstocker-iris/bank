@@ -14,6 +14,20 @@ public class Bank {
         return root.lookupOrCreate(pNom);
     }
 
+    public void display()
+    {
+        if (this.root != null) {
+            this.root.display();
+        }
+    }
+
+    public void displayWithPad()
+    {
+        if (this.root != null) {
+            this.root.display(0);
+        }
+    }
+
     public static Bank create()
     {
         Bank bank = new Bank();
